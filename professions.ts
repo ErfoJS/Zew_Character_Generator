@@ -1,145 +1,4 @@
-type ProfDefault = [
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  },
-  {
-    name: string;
-    value: number;
-  }
-];
+import { Stat } from "./stats";
 
 class Ability {
   name: string;
@@ -224,14 +83,13 @@ export class Professnion {
     this.hobby_4 = this.hobby(this.professions);
   }
 
-  bulidProf(professions: ProfDefault | number[]): number | string {
+  bulidProf(professions: (number | Hobby)[]): number | string {
     const index = Math.floor(Math.random() * professions.length);
-    if (typeof professions[0] === "number") {
-      const [prof] = this.profsValue.splice(index, 1);
+    const [prof] = this.profsValue.splice(index, 1);
+    if (typeof prof === "number") {
       return prof;
     } else {
-      const [prof] = this.professions.splice(index, 1);
-      return prof.name;
+      return (prof as Hobby).name;
     }
   }
 
@@ -245,7 +103,7 @@ export class Professnion {
           .name;
   }
 
-  hobby(professions: ProfDefault): Hobby {
+  hobby(professions: Hobby[]): Hobby {
     const index = Math.floor(Math.random() * professions.length);
     let [prof] = this.professions.splice(index, 1);
     prof.value += 20;
@@ -254,7 +112,7 @@ export class Professnion {
 
   private profsValue = [70, 60, 60, 50, 50, 50, 40, 40, 40];
 
-  private professions: ProfDefault = [
+  private professions: Hobby[] = [
     {
       name: `Antropologia`,
       value: 1,

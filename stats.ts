@@ -1,4 +1,4 @@
-class Stat {
+export class Stat {
   readonly value: number;
   readonly half: number;
   readonly oneFifth: number;
@@ -53,14 +53,6 @@ export class Stats {
     const index = Math.floor(Math.random() * statsValue.length);
     const [stat] = this.stats_value.splice(index, 1);
     return stat;
-  }
-
-  half(stat: number): number {
-    return Math.floor(stat / 2);
-  }
-
-  oneFifth(stat: number): number {
-    return Math.floor(stat / 5);
   }
 
   luck(): number {

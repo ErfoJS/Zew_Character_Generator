@@ -3,7 +3,7 @@ import { Stats } from "./stats";
 
 class Character {
   name: string;
-  stats: object;
+  stats: Stats;
   profession: any;
 
   constructor() {
@@ -15,15 +15,13 @@ class Character {
   static drawS(trait: string[]): string {
     return trait[Math.floor(Math.random() * trait.length)];
   }
-
-  static drawO(trait: Professnion[]): object {
-    return trait[Math.floor(Math.random() * trait.length)];
-  }
 }
 
+// function doge: number(character: Character) {
+
+// }
 const names = ["John Snow", "Alisa Rivenbort", "Julius Cezar"];
 
-let lol = new Character();
-let lol2 = new Character();
-console.log(lol);
-console.log(lol2);
+let RandomCharacter = new Character();
+RandomCharacter;
+console.log(RandomCharacter);
