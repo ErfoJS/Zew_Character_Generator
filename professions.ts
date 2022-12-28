@@ -29,85 +29,93 @@ export class Professnion {
   umiej_7: Ability;
   umiej_8: Ability;
   umiej_9: Ability;
-  hobby_1: Hobby;
-  hobby_2: Hobby;
-  hobby_3: Hobby;
-  hobby_4: Hobby;
+  hobby_1: Ability;
+  hobby_2: Ability;
+  hobby_3: Ability;
+  hobby_4: Ability;
 
   constructor() {
     this.umiej_1 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
     this.umiej_2 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
     this.umiej_3 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
     this.umiej_4 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
     this.umiej_5 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
     this.umiej_6 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
     this.umiej_7 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
     this.umiej_8 = new Ability(
-      this.bulidProf(this.professions).toString(),
-      +this.bulidProf(this.profsValue)
+      this.profMake(this.professions).toString(),
+      +this.value(this.profsValue)
     );
 
-    this.umiej_9 = new Ability(this.wealht(), +this.bulidProf(this.profsValue));
+    this.umiej_9 = new Ability(this.wealhtMake(), +this.value(this.profsValue));
 
-    this.hobby_1 = this.hobby(this.professions);
-    this.hobby_2 = this.hobby(this.professions);
-    this.hobby_3 = this.hobby(this.professions);
-    this.hobby_4 = this.hobby(this.professions);
+    this.hobby_1 = this.hobbyMake(this.professions);
+    this.hobby_2 = this.hobbyMake(this.professions);
+    this.hobby_3 = this.hobbyMake(this.professions);
+    this.hobby_4 = this.hobbyMake(this.professions);
   }
 
-  bulidProf(professions: (number | Hobby)[]): number | string {
+  value(professions: number[]): number {
     const index = Math.floor(Math.random() * professions.length);
     const [prof] = this.profsValue.splice(index, 1);
-    if (typeof prof === "number") {
-      return prof;
+    return prof;
+  }
+
+  profMake(professions: Hobby[]): string {
+    const index = Math.floor(Math.random() * professions.length);
+    const [prof] = this.professions.splice(index, 1);
+    return prof.name;
+  }
+
+  wealhtMake(): string {
+    const index = this.professions.findIndex(
+      (element) => element.name === "Majętność"
+    );
+    if (index) {
+      const [prof] = this.professions.splice(index, 1);
+      return prof.name;
     } else {
-      return (prof as Hobby).name;
+      return this.professions[
+        Math.floor(Math.random() * this.professions.length)
+      ].name;
     }
   }
 
-  wealht(): string {
-    const element = this.professions.find(
-      (element) => element.name === "Majętność"
-    );
-    return element
-      ? element.name
-      : this.professions[Math.floor(Math.random() * this.professions.length)]
-          .name;
-  }
-
-  hobby(professions: Hobby[]): Hobby {
+  hobbyMake(professions: Hobby[]): Ability {
     const index = Math.floor(Math.random() * professions.length);
-    let [prof] = this.professions.splice(index, 1);
-    prof.value += 20;
-    return prof;
+    const [randomHobby] = this.professions.splice(index, 1);
+    randomHobby.value += 20;
+    const hobby = new Ability(randomHobby.name, randomHobby.value);
+
+    return hobby;
   }
 
   private profsValue = [70, 60, 60, 50, 50, 50, 40, 40, 40];
