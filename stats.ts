@@ -11,51 +11,51 @@ export class Stat {
 }
 export class Stats {
   private stats_value = [40, 50, 50, 50, 60, 60, 70, 80]; // 8 elements
-  sila: Stat;
-  kondycja: Stat;
-  moc: Stat;
-  zrecznosc: Stat;
-  wyglad: Stat;
-  budowaCiala: Stat;
-  inteligencja: Stat;
-  wyksztalcenie: Stat;
-  szczescie: number;
-  punktyMagii: number;
-  krzepa: number;
-  modyfikatorObrazen: number;
-  punktyWytrzymalosci: number;
-  poczytalnosc: number;
-  unikNaturalny: number;
-  jezykOjczysty: number;
+  strength: Stat;
+  endurance: Stat;
+  power: Stat;
+  dexterity: Stat;
+  appearance: Stat;
+  bodyBulid: Stat;
+  intelligence: Stat;
+  education: Stat;
+  luck: number;
+  magicPoints: number;
+  brawn: number;
+  damageModifier: number;
+  healthPoints: number;
+  sanity: number;
+  dogeNatural: number;
+  motherLanguage: number;
 
   constructor() {
-    this.sila = new Stat(this.bulid(this.stats_value));
-    this.kondycja = new Stat(this.bulid(this.stats_value));
-    this.moc = new Stat(this.bulid(this.stats_value));
-    this.zrecznosc = new Stat(this.bulid(this.stats_value));
-    this.wyglad = new Stat(this.bulid(this.stats_value));
-    this.budowaCiala = new Stat(this.bulid(this.stats_value));
-    this.inteligencja = new Stat(this.bulid(this.stats_value));
-    this.wyksztalcenie = new Stat(this.bulid(this.stats_value));
-    this.szczescie = this.luck();
-    this.punktyMagii = this.magicPoints(this.moc.value);
-    this.krzepa = this.sila.value + this.budowaCiala.value;
-    this.modyfikatorObrazen = this.damageModifier(this.krzepa);
-    this.punktyWytrzymalosci = Math.floor(
-      (this.budowaCiala.value + this.kondycja.value) / 10
+    this.strength = new Stat(this.drawStatsValue(this.stats_value));
+    this.endurance = new Stat(this.drawStatsValue(this.stats_value));
+    this.power = new Stat(this.drawStatsValue(this.stats_value));
+    this.dexterity = new Stat(this.drawStatsValue(this.stats_value));
+    this.appearance = new Stat(this.drawStatsValue(this.stats_value));
+    this.bodyBulid = new Stat(this.drawStatsValue(this.stats_value));
+    this.intelligence = new Stat(this.drawStatsValue(this.stats_value));
+    this.education = new Stat(this.drawStatsValue(this.stats_value));
+    this.luck = this.luckCount();
+    this.magicPoints = this.magicPointsCounter(this.power.value);
+    this.brawn = this.strength.value + this.bodyBulid.value;
+    this.damageModifier = this.damageModifierCounter(this.brawn);
+    this.healthPoints = Math.floor(
+      (this.bodyBulid.value + this.endurance.value) / 10
     );
-    this.poczytalnosc = this.moc.value;
-    this.unikNaturalny = this.zrecznosc.half;
-    this.jezykOjczysty = this.wyksztalcenie.value;
+    this.sanity = this.power.value;
+    this.dogeNatural = this.dexterity.half;
+    this.motherLanguage = this.education.value;
   }
 
-  bulid(statsValue: number[]): number {
+  drawStatsValue(statsValue: number[]): number {
     const index = Math.floor(Math.random() * statsValue.length);
     const [stat] = this.stats_value.splice(index, 1);
     return stat;
   }
 
-  luck(): number {
+  luckCount(): number {
     return (
       (Math.floor(Math.random() * 6 + 1) +
         Math.floor(Math.random() * 6 + 1) +
@@ -64,7 +64,7 @@ export class Stats {
     );
   }
 
-  damageModifier(sturdiness: number): number {
+  damageModifierCounter(sturdiness: number): number {
     if (sturdiness <= 64) {
       return -2;
     } else if (sturdiness <= 84) {
@@ -78,7 +78,7 @@ export class Stats {
     }
   }
 
-  magicPoints(power: number): number {
+  magicPointsCounter(power: number): number {
     return Math.floor(power / 5);
   }
 }

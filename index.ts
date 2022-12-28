@@ -7,20 +7,17 @@ class Character {
   profession: any;
 
   constructor() {
-    this.name = Character.drawS(names);
+    this.name = Character.drawName(characterNames);
     this.stats = new Stats();
     this.profession = new Professnion();
   }
 
-  static drawS(trait: string[]): string {
+  static drawName(trait: string[]): string {
     return trait[Math.floor(Math.random() * trait.length)];
   }
 }
 
-// function doge: number(character: Character) {
-
-// }
-const names = ["John Snow", "Alisa Rivenbort", "Julius Cezar"];
+const characterNames = ["John Snow", "Alisa Rivenbort", "Julius Cezar"];
 
 let RandomCharacter = new Character();
 RandomCharacter;

@@ -20,62 +20,65 @@ type Hobby = {
 };
 
 export class Professnion {
-  umiej_1: Ability;
-  umiej_2: Ability;
-  umiej_3: Ability;
-  umiej_4: Ability;
-  umiej_5: Ability;
-  umiej_6: Ability;
-  umiej_7: Ability;
-  umiej_8: Ability;
-  umiej_9: Ability;
+  ability_1: Ability;
+  ability_2: Ability;
+  ability_3: Ability;
+  ability_4: Ability;
+  ability_5: Ability;
+  ability_6: Ability;
+  ability_7: Ability;
+  ability_8: Ability;
+  ability_9: Ability;
   hobby_1: Ability;
   hobby_2: Ability;
   hobby_3: Ability;
   hobby_4: Ability;
 
   constructor() {
-    this.umiej_1 = new Ability(
+    this.ability_1 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_2 = new Ability(
+    this.ability_2 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_3 = new Ability(
+    this.ability_3 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_4 = new Ability(
+    this.ability_4 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_5 = new Ability(
+    this.ability_5 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_6 = new Ability(
+    this.ability_6 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_7 = new Ability(
+    this.ability_7 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_8 = new Ability(
+    this.ability_8 = new Ability(
       this.profMake(this.professions).toString(),
-      +this.value(this.profsValue)
+      +this.valueGenerator(this.profsValue)
     );
 
-    this.umiej_9 = new Ability(this.wealhtMake(), +this.value(this.profsValue));
+    this.ability_9 = new Ability(
+      this.wealhtMake(),
+      +this.valueGenerator(this.profsValue)
+    );
 
     this.hobby_1 = this.hobbyMake(this.professions);
     this.hobby_2 = this.hobbyMake(this.professions);
@@ -83,7 +86,7 @@ export class Professnion {
     this.hobby_4 = this.hobbyMake(this.professions);
   }
 
-  value(professions: number[]): number {
+  valueGenerator(professions: number[]): number {
     const index = Math.floor(Math.random() * professions.length);
     const [prof] = this.profsValue.splice(index, 1);
     return prof;
@@ -114,7 +117,6 @@ export class Professnion {
     const [randomHobby] = this.professions.splice(index, 1);
     randomHobby.value += 20;
     const hobby = new Ability(randomHobby.name, randomHobby.value);
-
     return hobby;
   }
 
@@ -122,19 +124,19 @@ export class Professnion {
 
   private professions: Hobby[] = [
     {
-      name: `Antropologia`,
+      name: `anthropology`,
       value: 1,
     },
     {
-      name: `Archeologia`,
+      name: `archaeology`,
       value: 1,
     },
     {
-      name: `Bron Palna (Długa)`,
+      name: `firearm (long)`,
       value: 25,
     },
     {
-      name: `Bron Palna (Krótka)`,
+      name: `firearm (short)`,
       value: 20,
     },
     {
@@ -142,123 +144,123 @@ export class Professnion {
       value: 5,
     },
     {
-      name: `Elektryka`,
+      name: `electricity`,
       value: 10,
     },
     {
-      name: `Gadanina`,
+      name: `smalltalking`,
       value: 5,
     },
     {
-      name: `Historia`,
+      name: `history`,
       value: 5,
     },
     {
-      name: `Jezyk Obcy`,
+      name: `foreign language`,
       value: 1,
     },
     {
-      name: `Korzystanie z Bubliotek`,
+      name: `using libraries`,
       value: 20,
     },
     {
-      name: `Majętność`,
+      name: `wealth`,
       value: 0,
     },
     {
-      name: `Mechanika`,
+      name: `mechanics`,
       value: 10,
     },
     {
-      name: `Medycyna`,
+      name: `medicine`,
       value: 1,
     },
     {
-      name: `Nasłuchiwanie`,
+      name: `listening`,
       value: 20,
     },
     {
-      name: `Nauka`,
+      name: `science`,
       value: 1,
     },
     {
-      name: `Nawigacja`,
+      name: `navigation`,
       value: 10,
     },
     {
-      name: `Obsługa cięzkiego sprzętu`,
+      name: `handling heavy equipment`,
       value: 1,
     },
     {
-      name: `Okultyzm`,
+      name: `occultism`,
       value: 5,
     },
     {
-      name: `Perswazja`,
+      name: `persuasion`,
       value: 10,
     },
     {
-      name: `Pierwsza Pomoc`,
+      name: `first aid`,
       value: 30,
     },
     {
-      name: `Prawo`,
+      name: `law`,
       value: 5,
     },
     {
-      name: `Pscchoanaliza`,
+      name: `pschoanalyze`,
       value: 1,
     },
     {
-      name: `Psychologia`,
+      name: `psychology`,
       value: 10,
     },
     {
-      name: `Spostrzegawczość`,
+      name: `observation`,
       value: 25,
     },
     {
-      name: `Sztuka / Rzemiosło`,
+      name: `art / craft`,
       value: 5,
     },
     {
-      name: `Sztuka Przetrwania`,
+      name: `the art of survival`,
       value: 10,
     },
     {
-      name: `Ślusarstwo`,
+      name: `ironwork`,
       value: 1,
     },
     {
-      name: `Tropienie`,
+      name: `tracking`,
       value: 10,
     },
     {
-      name: `Ukrywanie`,
+      name: `hiding`,
       value: 20,
     },
     {
-      name: `Unik`,
-      value: 30,
+      name: `doge`,
+      value: 0,
     },
     {
-      name: `Urok Osobisty`,
+      name: `personal charm`,
       value: 15,
     },
     {
-      name: `Walka Wręcz (Bijatyka)`,
+      name: `hand-to-hand combat (brawl)`,
       value: 25,
     },
     {
-      name: `Wiedza o Naturze`,
+      name: `knowledge of nature`,
       value: 10,
     },
     {
-      name: `Zastraszanie`,
+      name: `bullying`,
       value: 15,
     },
     {
-      name: `Zręczne Palce`,
+      name: `skillful fingers`,
       value: 10,
     },
   ];
